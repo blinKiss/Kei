@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>챗봇UI</title>
+    <style>
+      div {
+        border: 1px solid blue;
+      }
+      .chat_wrapper {
+        border: none;
+      }
+      .chat_header {
+        width: 500px;
+      }
+      .chat_content {
+        height: 600px;
+        width: 500px;
+        box-sizing: border-box;
+        overflow-y: scroll;
+      }
+      .chat_input {
+        padding: 3px 5px;
+        width: 400px;
+      }
+      .btn_send {
+        background-color: crimson;
+        color: white;
+        width: 40px;
+      }
+      .msg_box {
+        border: none;
+        margin: 2px;
+      }
+      .msg_box > span {
+        background-color: yellow;
+        color: black;
+        float: right;
+        padding: 5px 5px;
+      }
+      .msg_box:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="chat_wrapper">
+      <div class="chat_header">
+        <h4>챗봇화면</h4>
+      </div>
+
+      <div class="chat_content" id="divbox"></div>
+
+      <div class="control">
+        <form action="" id="form">
+          <input type="text" class="chat_input" name="" id="txt_input" />
+          <input type="button" class="btn_send" value="전송" id="btn_submit" />
+        </form>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        //alert('챗봇클라이언트');
+      });
+      $("#btn_submit").click(function () {
+        send();
+        $("#txt_input").val("");
+      });
+      $("#form").on("submit", function (e) {
+        e.preventDefault();
+      });
+
+      function send() {
+        send_text = $("#txt_input").val();
+        //alert('메세지테스트:'+temp);
+        $("#divbox").append(
+          "<div class='msg_box send'><span>" + send_text + "</span></div>"
+        );
+      }
+    </script>
+  </body>
+</html>
